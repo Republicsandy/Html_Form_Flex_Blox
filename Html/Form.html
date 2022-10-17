@@ -20,6 +20,7 @@
             <div>
                 <label for="pwd">Password input type:</label>
                 <input type="password" id="pwd" name="pwd">
+                <error-output class="pwd-error" for="text"></error-output>
             </div>
             <div>
                 <label for="email"> Email input type:</label>
@@ -97,6 +98,17 @@
             errorMobile.textContent = " ";
             else
             errorMobile.textContent = "Invalid number"
+        });
+         // UC 4 : Password Rule1-5
+         const password = document.querySelector("#pwd");
+        const errorPwd = document.querySelector(".pwd-error");
+        password.addEventListener('input',function()
+        {
+            let pwdRegex = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$")
+            if (pwdRegex.test(password.value))
+                      errorPwd.textContent = "";
+                  else
+                      errorPwd.textContent = "Invalid Password";
         });
     </script>
     </body>
